@@ -1,10 +1,13 @@
+package siml;
+
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class Lox {
-    public static void main(String[] args) {
+public class Siml {
+    public static void main(String[] args) throws IOException {
         if (args.length > 1) {
-            System.out.println("Usage: jlox [script]");
+            System.out.println("Usage: jsiml [script]");
             System.exit(64);
         }
 
@@ -18,9 +21,9 @@ public class Lox {
 
     }
 
-    private static void runFile(String filePath) {
+    private static void runFile(String filePath) throws IOException {
         System.out.println(filePath);
-        byte[] bytes = Files.readAllBytes(Paths.get(filePath))
+        byte[] bytes = Files.readAllBytes(Paths.get(filePath));
     }
 
     private static void runPromt() {
