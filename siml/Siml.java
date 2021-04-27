@@ -5,9 +5,11 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 
 public class Siml {
+    private static boolean hasError = false;
     public static void main(String[] args) throws IOException {
         if (args.length > 1) {
             System.out.println("Usage: jsiml [script]");
@@ -29,6 +31,7 @@ public class Siml {
         byte[] bytes = Files.readAllBytes(Paths.get(filePath));
         String source = new String(bytes, Charset.defaultCharset());
         run(source);
+        if(hasError) System.exit(65);
         
     }
 
@@ -42,11 +45,30 @@ public class Siml {
                 break;
             }
             run(line);
+            hasError = false;
         }
 
     }
 
     private static void run(String source){
+        Scanner scanner = new Scanner(source);
+        List<Token> tokens = scanner.scanTokens();
+
+        for(Token token: tokens){
+            System.out.println(token);
+        }
         
+    }
+
+    static void error(int line, String message){
+        report(line, "", message);
+    }
+
+    private static void report(int line, String where, String message){
+        System.err.println(
+            "[line " + line + "]" + where + ": " + message
+        );
+
+        hasError = true;
     }
 }
