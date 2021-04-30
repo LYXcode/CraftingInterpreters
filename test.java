@@ -8,16 +8,15 @@ import java.util.List;
 public class test {
     public static void main(String[] args) throws IOException {
 
-        String url = "./myFolder/data.txt";
-        String fileUrl = "./myFolder/newdata.txt";
-        String content = "hello world";
-        Path newFilePath = Paths.get(fileUrl);
+        // String url = "./myFolder/data.txt";
+        // String fileUrl = "./myFolder/newdata.txt";
+        // String content = "hello world";
+        // Path newFilePath = Paths.get(fileUrl);
 
-        if( !Files.exists(newFilePath)){
-            Files.createFile(newFilePath);
-        }
-        Files.write(newFilePath, content.getBytes());
-
+        // if( !Files.exists(newFilePath)){
+        //     Files.createFile(newFilePath);
+        // }
+        // Files.write(newFilePath, content.getBytes());
 
 
 
