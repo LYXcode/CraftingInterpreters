@@ -4,13 +4,18 @@ import java.io.IOException;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+
+import org.graalvm.compiler.bytecode.Bytes;
 
 
 public class Siml {
     private static boolean hasError = false;
     public static void main(String[] args) throws IOException {
+
+test();
         if (args.length > 1) {
             System.out.println("Usage: jsiml [script]");
             System.exit(64);
@@ -24,6 +29,13 @@ public class Siml {
             runPromt();
         }
 
+    }
+
+    private static void test() throws IOException{
+Path filepPath = Paths.get("./siml/test.siml");
+byte[] bytes = Files.readAllBytes(filepPath);
+String source = new String(bytes, Charset.defaultCharset());
+run(source);
     }
 
     private static void runFile(String filePath) throws IOException {

@@ -1,0 +1,2 @@
+print "Hello, world!";
+my_data = 123.456;
